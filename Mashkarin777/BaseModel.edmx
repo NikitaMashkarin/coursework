@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище mashkarin777Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Personal_data">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Passport_series" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Passport_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SNILS" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date_start" Type="date" />
+          <Property Name="Date_end" Type="date" />
+          <Property Name="Id_report" Type="int" />
+        </EntityType>
+        <EntityType Name="Project_objectives">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_project" Type="int" />
+          <Property Name="Id_task" Type="int" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Date_create" Type="date" />
+          <Property Name="Id_social_worker" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Social_worker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Full_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Post" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Personal_data" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date_end" Type="date" />
+          <Property Name="Id_social_worker" Type="int" />
+        </EntityType>
+        <Association Name="FK_Project_objectives_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="Project_objectives" Type="Self.Project_objectives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project_objectives">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_objectives_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="Project_objectives" Type="Self.Project_objectives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project_objectives">
+              <PropertyRef Name="Id_task" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Report">
+          <End Role="Report" Type="Self.Report" Multiplicity="0..1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="Id_report" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_Social_worker">
+          <End Role="Social_worker" Type="Self.Social_worker" Multiplicity="0..1" />
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Social_worker">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="Id_social_worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Social_worker">
+          <End Role="Social_worker" Type="Self.Social_worker" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Social_worker">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Id_social_worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище mashkarin777ModelContainer">
+          <EntitySet Name="Personal_data" EntityType="Self.Personal_data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project_objectives" EntityType="Self.Project_objectives" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Social_worker" EntityType="Self.Social_worker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Project_objectives_Project" Association="Self.FK_Project_objectives_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Project_objectives" EntitySet="Project_objectives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_objectives_Task" Association="Self.FK_Project_objectives_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="Project_objectives" EntitySet="Project_objectives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Report" Association="Self.FK_Project_Report">
+            <End Role="Report" EntitySet="Report" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_Social_worker" Association="Self.FK_Report_Social_worker">
+            <End Role="Social_worker" EntitySet="Social_worker" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Social_worker" Association="Self.FK_Task_Social_worker">
+            <End Role="Social_worker" EntitySet="Social_worker" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mashkarin777Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Personal_data">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passport_series" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passport_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SNILS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Social_worker" Relationship="Self.FK_Social_worker_Personal_data" FromRole="Personal_data" ToRole="Social_worker" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Social_worker" Relationship="Self.FK_Social_worker_Post" FromRole="Post" ToRole="Social_worker" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_start" Type="DateTime" Precision="0" />
+          <Property Name="Date_end" Type="DateTime" Precision="0" />
+          <Property Name="Id_report" Type="Int32" />
+          <NavigationProperty Name="Project_objectives" Relationship="Self.FK_Project_objectives_Project" FromRole="Project" ToRole="Project_objectives" />
+          <NavigationProperty Name="Report" Relationship="Self.FK_Project_Report" FromRole="Project" ToRole="Report" />
+        </EntityType>
+        <EntityType Name="Project_objectives">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_project" Type="Int32" />
+          <Property Name="Id_task" Type="Int32" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_Project_objectives_Project" FromRole="Project_objectives" ToRole="Project" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Project_objectives_Task" FromRole="Project_objectives" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Date_create" Type="DateTime" Precision="0" />
+          <Property Name="Id_social_worker" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_Project_Report" FromRole="Report" ToRole="Project" />
+          <NavigationProperty Name="Social_worker" Relationship="Self.FK_Report_Social_worker" FromRole="Report" ToRole="Social_worker" />
+        </EntityType>
+        <EntityType Name="Social_worker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Full_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Post" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Personal_data" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personal_data1" Relationship="Self.FK_Social_worker_Personal_data" FromRole="Social_worker" ToRole="Personal_data" />
+          <NavigationProperty Name="Post1" Relationship="Self.FK_Social_worker_Post" FromRole="Social_worker" ToRole="Post" />
+          <NavigationProperty Name="Report" Relationship="Self.FK_Report_Social_worker" FromRole="Social_worker" ToRole="Report" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_Social_worker" FromRole="Social_worker" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_end" Type="DateTime" Precision="0" />
+          <Property Name="Id_social_worker" Type="Int32" />
+          <NavigationProperty Name="Project_objectives" Relationship="Self.FK_Project_objectives_Task" FromRole="Task" ToRole="Project_objectives" />
+          <NavigationProperty Name="Social_worker" Relationship="Self.FK_Task_Social_worker" FromRole="Task" ToRole="Social_worker" />
+        </EntityType>
+        <Association Name="FK_Social_worker_Personal_data">
+          <End Role="Personal_data" Type="Self.Personal_data" Multiplicity="0..1" />
+          <End Role="Social_worker" Type="Self.Social_worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_data">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Social_worker">
+              <PropertyRef Name="Personal_data" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Social_worker_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Social_worker" Type="Self.Social_worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Social_worker">
+              <PropertyRef Name="Post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_objectives_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="Project_objectives" Type="Self.Project_objectives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project_objectives">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Report">
+          <End Role="Report" Type="Self.Report" Multiplicity="0..1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="Id_report" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_objectives_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="Project_objectives" Type="Self.Project_objectives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project_objectives">
+              <PropertyRef Name="Id_task" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_Social_worker">
+          <End Role="Social_worker" Type="Self.Social_worker" Multiplicity="0..1" />
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Social_worker">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="Id_social_worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Social_worker">
+          <End Role="Social_worker" Type="Self.Social_worker" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Social_worker">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Id_social_worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mashkarin777Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Personal_data" EntityType="Self.Personal_data" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Project" EntityType="Self.Project" />
+          <EntitySet Name="Project_objectives" EntityType="Self.Project_objectives" />
+          <EntitySet Name="Report" EntityType="Self.Report" />
+          <EntitySet Name="Social_worker" EntityType="Self.Social_worker" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Task" EntityType="Self.Task" />
+          <AssociationSet Name="FK_Social_worker_Personal_data" Association="Self.FK_Social_worker_Personal_data">
+            <End Role="Personal_data" EntitySet="Personal_data" />
+            <End Role="Social_worker" EntitySet="Social_worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Social_worker_Post" Association="Self.FK_Social_worker_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Social_worker" EntitySet="Social_worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_objectives_Project" Association="Self.FK_Project_objectives_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Project_objectives" EntitySet="Project_objectives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Report" Association="Self.FK_Project_Report">
+            <End Role="Report" EntitySet="Report" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_objectives_Task" Association="Self.FK_Project_objectives_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="Project_objectives" EntitySet="Project_objectives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_Social_worker" Association="Self.FK_Report_Social_worker">
+            <End Role="Social_worker" EntitySet="Social_worker" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Social_worker" Association="Self.FK_Task_Social_worker">
+            <End Role="Social_worker" EntitySet="Social_worker" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище mashkarin777ModelContainer" CdmEntityContainer="mashkarin777Entities">
+          <EntitySetMapping Name="Personal_data">
+            <EntityTypeMapping TypeName="mashkarin777Model.Personal_data">
+              <MappingFragment StoreEntitySet="Personal_data">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Passport_series" ColumnName="Passport_series" />
+                <ScalarProperty Name="Passport_number" ColumnName="Passport_number" />
+                <ScalarProperty Name="SNILS" ColumnName="SNILS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="mashkarin777Model.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project">
+            <EntityTypeMapping TypeName="mashkarin777Model.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date_start" ColumnName="Date_start" />
+                <ScalarProperty Name="Date_end" ColumnName="Date_end" />
+                <ScalarProperty Name="Id_report" ColumnName="Id_report" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project_objectives">
+            <EntityTypeMapping TypeName="mashkarin777Model.Project_objectives">
+              <MappingFragment StoreEntitySet="Project_objectives">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_project" ColumnName="Id_project" />
+                <ScalarProperty Name="Id_task" ColumnName="Id_task" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report">
+            <EntityTypeMapping TypeName="mashkarin777Model.Report">
+              <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date_create" ColumnName="Date_create" />
+                <ScalarProperty Name="Id_social_worker" ColumnName="Id_social_worker" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Social_worker">
+            <EntityTypeMapping TypeName="mashkarin777Model.Social_worker">
+              <MappingFragment StoreEntitySet="Social_worker">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Full_name" ColumnName="Full_name" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Personal_data" ColumnName="Personal_data" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="mashkarin777Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task">
+            <EntityTypeMapping TypeName="mashkarin777Model.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date_end" ColumnName="Date_end" />
+                <ScalarProperty Name="Id_social_worker" ColumnName="Id_social_worker" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
