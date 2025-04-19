@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Mashkarin777
 {
@@ -20,25 +9,48 @@ namespace Mashkarin777
     /// </summary>
     public partial class SocialWorkerPage : Page
     {
-        public SocialWorkerPage()
+        private int id;
+        public SocialWorkerPage(int id)
         {
             InitializeComponent();
+            this.id = id;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AuthPage()); // или переход на другую страницу
+            Manager.MainFrame.Navigate(new AuthPage());
         }
 
         private void BtnTasks_Click(object sender, RoutedEventArgs e)
         {
-            // Навигация к задачам
+            Manager.MainFrame.Navigate(new Tasks(id));
         }
 
         private void BtnRegisterTask_Click(object sender, RoutedEventArgs e)
         {
-            // Навигация к регистрации выполнения задачи
-        }
+            if (!int.TryParse(TaskIdTextBox.Text, out int taskId))
+            {
+                MessageBox.Show("Введите корректный номер задачи.");
+                return;
+            }
 
+            using (var context = new mashkarin777Entities())
+            {
+                var task = context.Task
+                    .FirstOrDefault(t => t.Id == taskId && t.Made == false && t.Social_worker.Id == id);
+
+                if (task == null)
+                {
+                    MessageBox.Show("Задача не найдена, уже выполнена или не принадлежит вам.");
+                    return;
+                }
+
+                task.Made = true;
+                context.SaveChanges();
+
+                MessageBox.Show($"Задача с ID {task.Id} успешно зарегистрирована как выполненная.",
+                                "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
     }
 }

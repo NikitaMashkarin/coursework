@@ -77,11 +77,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Date_end" Type="date" />
           <Property Name="Id_social_worker" Type="int" />
+          <Property Name="Made" Type="bit" />
         </EntityType>
         <Association Name="FK_Project_objectives_Project">
           <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
@@ -131,6 +132,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Social_worker_Personal_data">
+          <End Role="Personal_data" Type="Self.Personal_data" Multiplicity="0..1" />
+          <End Role="Social_worker" Type="Self.Social_worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_data">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Social_worker">
+              <PropertyRef Name="Personal_data" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Social_worker_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Social_worker" Type="Self.Social_worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Social_worker">
+              <PropertyRef Name="Personal_data" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Task_Social_worker">
           <End Role="Social_worker" Type="Self.Social_worker" Multiplicity="0..1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
@@ -168,6 +193,14 @@
             <End Role="Social_worker" EntitySet="Social_worker" />
             <End Role="Report" EntitySet="Report" />
           </AssociationSet>
+          <AssociationSet Name="FK_Social_worker_Personal_data" Association="Self.FK_Social_worker_Personal_data">
+            <End Role="Personal_data" EntitySet="Personal_data" />
+            <End Role="Social_worker" EntitySet="Social_worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Social_worker_Post" Association="Self.FK_Social_worker_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Social_worker" EntitySet="Social_worker" />
+          </AssociationSet>
           <AssociationSet Name="FK_Task_Social_worker" Association="Self.FK_Task_Social_worker">
             <End Role="Social_worker" EntitySet="Social_worker" />
             <End Role="Task" EntitySet="Task" />
@@ -195,6 +228,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Social_worker" Relationship="Self.FK_Social_worker_Post" FromRole="Post" ToRole="Social_worker" />
+          <NavigationProperty Name="Social_worker1" Relationship="mashkarin777Model.FK_Social_worker_Post1" FromRole="Post" ToRole="Social_worker" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -246,6 +280,7 @@
           <NavigationProperty Name="Post1" Relationship="Self.FK_Social_worker_Post" FromRole="Social_worker" ToRole="Post" />
           <NavigationProperty Name="Report" Relationship="Self.FK_Report_Social_worker" FromRole="Social_worker" ToRole="Report" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Task_Social_worker" FromRole="Social_worker" ToRole="Task" />
+          <NavigationProperty Name="Post11" Relationship="mashkarin777Model.FK_Social_worker_Post1" FromRole="Social_worker" ToRole="Post" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -268,6 +303,7 @@
           <Property Name="Id_social_worker" Type="Int32" />
           <NavigationProperty Name="Project_objectives" Relationship="Self.FK_Project_objectives_Task" FromRole="Task" ToRole="Project_objectives" />
           <NavigationProperty Name="Social_worker" Relationship="Self.FK_Task_Social_worker" FromRole="Task" ToRole="Social_worker" />
+          <Property Name="Made" Type="Boolean" />
         </EntityType>
         <Association Name="FK_Social_worker_Personal_data">
           <End Role="Personal_data" Type="Self.Personal_data" Multiplicity="0..1" />
@@ -390,7 +426,23 @@
             <End Role="Social_worker" EntitySet="Social_worker" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
+          <AssociationSet Name="FK_Social_worker_Post1" Association="mashkarin777Model.FK_Social_worker_Post1">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Social_worker" EntitySet="Social_worker" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Social_worker_Post1">
+          <End Type="mashkarin777Model.Post" Role="Post" Multiplicity="0..1" />
+          <End Type="mashkarin777Model.Social_worker" Role="Social_worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Social_worker">
+              <PropertyRef Name="Personal_data" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -475,6 +527,7 @@
           <EntitySetMapping Name="Task">
             <EntityTypeMapping TypeName="mashkarin777Model.Task">
               <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Made" ColumnName="Made" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />

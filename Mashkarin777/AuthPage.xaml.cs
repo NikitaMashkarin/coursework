@@ -43,17 +43,17 @@ namespace Mashkarin777
                 {
                     case 1:
                         {
-                            Manager.MainFrame.Navigate(new AdministratorPage());
+                            Manager.MainFrame.Navigate(new AdministratorPage(user.Id));
                             break;
                         }
                     case 2:
                         {
-                            Manager.MainFrame.Navigate(new SocialWorkerPage());
+                            Manager.MainFrame.Navigate(new SocialWorkerPage(user.Id));
                             break;
                         }
                     case 3:
                         {
-                            Manager.MainFrame.Navigate(new CoordinatorPage());
+                            Manager.MainFrame.Navigate(new CoordinatorPage(user.Id));
                             break;
                         }
                     default:

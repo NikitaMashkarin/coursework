@@ -20,14 +20,17 @@ namespace Mashkarin777
     /// </summary>
     public partial class AdministratorPage : Page
     {
-        public AdministratorPage()
+        private int id;
+        public AdministratorPage(int id)
         {
             InitializeComponent();
+            this.id = id;
         }
 
         private void BtnProjects_Click(object sender, RoutedEventArgs e)
         {
             // Открытие окна или логика по проектам
+            MessageBox.Show($"{id}", "Добро пожаловать!", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void BtnEmployees_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -107,22 +108,29 @@ namespace Mashkarin777
 
                 context.SaveChanges();
             }
+            using (var context = new mashkarin777Entities())
+            {
+                var user = context.Social_worker
+                          .FirstOrDefault(u => u.Login.Trim() == LogintxtBox.Text);
 
-            switch (post) {
-                case 1:{
-                        Manager.MainFrame.Navigate(new AdministratorPage());
-                        break;
+                switch (post)
+                {
+                    case 1:
+                        {
+                            Manager.MainFrame.Navigate(new AdministratorPage(user.Id));
+                            break;
                         }
-                case 2:
-                    {
-                        Manager.MainFrame.Navigate(new SocialWorkerPage());
-                        break;
-                    }
-                case 3:
-                    {
-                        Manager.MainFrame.Navigate(new CoordinatorPage());
-                        break;
-                    }
+                    case 2:
+                        {
+                            Manager.MainFrame.Navigate(new SocialWorkerPage(user.Id));
+                            break;
+                        }
+                    case 3:
+                        {
+                            Manager.MainFrame.Navigate(new CoordinatorPage(user.Id));
+                            break;
+                        }
+                }
             }
         }
 

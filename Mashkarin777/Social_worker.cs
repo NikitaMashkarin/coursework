@@ -36,5 +36,6 @@ namespace Mashkarin777
         public virtual ICollection<Report> Report { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Task { get; set; }
+        public virtual Post Post11 { get; set; }
     }
 }

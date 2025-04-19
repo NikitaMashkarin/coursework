@@ -20,6 +20,7 @@
         <AssociationConnector Association="mashkarin777Model.FK_Project_objectives_Task" ManuallyRouted="false" />
         <AssociationConnector Association="mashkarin777Model.FK_Report_Social_worker" ManuallyRouted="false" />
         <AssociationConnector Association="mashkarin777Model.FK_Task_Social_worker" ManuallyRouted="false" />
+        <AssociationConnector Association="mashkarin777Model.FK_Social_worker_Post1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

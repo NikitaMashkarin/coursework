@@ -20,9 +20,11 @@ namespace Mashkarin777
     /// </summary>
     public partial class CoordinatorPage : Page
     {
-        public CoordinatorPage()
+        private int id;
+        public CoordinatorPage(int id)
         {
             InitializeComponent();
+            this.id = id;
         }
 
         private void BtnReports_Click(object sender, RoutedEventArgs e)

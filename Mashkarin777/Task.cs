@@ -25,6 +25,7 @@ namespace Mashkarin777
         public string Description { get; set; }
         public Nullable<System.DateTime> Date_end { get; set; }
         public Nullable<int> Id_social_worker { get; set; }
+        public Nullable<bool> Made { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Project_objectives> Project_objectives { get; set; }

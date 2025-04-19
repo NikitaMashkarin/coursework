@@ -1,4 +1,4 @@
-﻿<Page x:Class="Mashkarin777.SocialWorkerPage"
+﻿<Page x:Class="Mashkarin777.Tasks"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Mashkarin777"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SocialWorkerPage">
+      Title="Tasks">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,7 +20,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Button Content="Выйти" Width="100" Height="30"
+        <Button Content="Назад" Width="100" Height="30"
             HorizontalAlignment="Left" VerticalAlignment="Top"
             Margin="90,218,0,0"
             Click="BtnBack_Click"
@@ -33,21 +33,23 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Социальный работник"
-                       FontSize="28"
-                       FontWeight="Bold"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Grid.Row="0"
-                       Margin="0,10,0,0" />
+            <TextBlock Text="Задачи"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Grid.Row="0"
+                   Margin="0,10,0,0" />
 
-            <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="312">
-                <Button Content="Задачи" Width="200" Height="40" Margin="0,10" Click="BtnTasks_Click"/>
+            <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button Content="Получить все задачи" Width="215" Height="40" Margin="0,10" Click="BtnGetAllTasks_Click"/>
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
                     <TextBox x:Name="TaskIdTextBox" Width="100" Height="30" Margin="0,0,10,0" />
-                    <Button Content="Регистрация выполнения задачи" Width="193" Height="30" Click="BtnRegisterTask_Click"/>
+                    <Button Content="Получить задачу" Width="106" Height="30" Click="BtnGetTaskById_Click"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
+
 </Page>
