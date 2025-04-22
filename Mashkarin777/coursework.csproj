@@ -107,8 +107,14 @@
     <Compile Include="Report.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReportPage.xaml.cs">
+      <DependentUpon>ReportPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SocialWorkerPage.xaml.cs">
       <DependentUpon>SocialWorkerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SocialWorkersCoordinatorPage.xaml.cs">
+      <DependentUpon>SocialWorkersCoordinatorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Social_worker.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
@@ -121,6 +127,9 @@
     </Compile>
     <Compile Include="Tasks.xaml.cs">
       <DependentUpon>Tasks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TasksAllPage.xaml.cs">
+      <DependentUpon>TasksAllPage.xaml</DependentUpon>
     </Compile>
     <Page Include="AdministratorPage.xaml">
       <SubType>Designer</SubType>
@@ -150,11 +159,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SocialWorkerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SocialWorkersCoordinatorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Tasks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TasksAllPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

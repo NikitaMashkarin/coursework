@@ -29,23 +29,19 @@ namespace Mashkarin777
 
         private void BtnReports_Click(object sender, RoutedEventArgs e)
         {
-            // Открытие окна с отчетами
+            Manager.MainFrame.Navigate(new ReportPage());
         }
 
         private void BtnSocialWorkers_Click(object sender, RoutedEventArgs e)
         {
-            // Переход к социальным работникам
+            Manager.MainFrame.Navigate(new SocialWorkersCoordinatorPage());
         }
 
         private void BtnTasks_Click(object sender, RoutedEventArgs e)
         {
-            // Переход к задачам
+            Manager.MainFrame.Navigate(new TasksAllPage());
         }
 
-        //private void BtnBack_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.NavigationService.GoBack();
-        //}
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {

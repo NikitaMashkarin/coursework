@@ -15,12 +15,10 @@ namespace Mashkarin777
             InitializeComponent();
             this.id = id;
         }
-
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AuthPage());
+            this.NavigationService.GoBack();
         }
-
         private void BtnTasks_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new Tasks(id));
