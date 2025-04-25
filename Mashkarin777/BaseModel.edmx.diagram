@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="mashkarin777Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="mashkarin777Model.Task" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="mashkarin777Model.FK_Social_worker_Personal_data" ManuallyRouted="false" />
-        <AssociationConnector Association="mashkarin777Model.FK_Social_worker_Post" ManuallyRouted="false" />
         <AssociationConnector Association="mashkarin777Model.FK_Project_objectives_Project" ManuallyRouted="false" />
         <AssociationConnector Association="mashkarin777Model.FK_Project_Report" ManuallyRouted="false" />
         <AssociationConnector Association="mashkarin777Model.FK_Project_objectives_Task" ManuallyRouted="false" />

@@ -1,0 +1,67 @@
+﻿<Page x:Class="Mashkarin777.WorkersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Mashkarin777"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="WorkersPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Content="Назад" Width="100" Height="30"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="90,336,0,0"
+            Click="BtnBack_Click"
+            Grid.Row="1" Grid.Column="2" />
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                   FontSize="28"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Grid.Row="0"
+                   Margin="0,10,0,0" ><Run Language="ru-ru" Text="База сотрудников"/></TextBlock>
+
+            <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button Content="Получить всех работников" Width="228" Height="35" Margin="0,10" Click="BtnGetAllWorker_Click"/>
+
+                <Button Content="Заполить персональные данные" Width="228" Height="34" Margin="0,10" Click="BtnAddPersonalData_Click"/>
+
+                <Button Content="Регестрация сотрудика" Width="229" Height="33" Margin="0,10" Click="BtnCreateWorker_Click"/>
+
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10" Width="229">
+                    <TextBox x:Name="PersonalDataIdTextBox" Width="34" Height="30" Margin="0,0,10,0" />
+                    <Button Content="Получить сотрудника" Width="185" Height="30" Click="BtnGetWorkerById_Click"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10" Width="229">
+                    <TextBox x:Name="WorkerIdTextBox" Width="34" Height="30" Margin="0,0,10,0" />
+                    <Button Content="Получить персональные данные" Width="185" Height="30" Click="BtnGetPersanalDataById_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Page>
+

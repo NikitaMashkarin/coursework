@@ -1,0 +1,85 @@
+﻿<Page x:Class="Mashkarin777.CreateWorkerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Mashkarin777"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CreateWorkerPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="205.56" />
+            <RowDefinition Height="211.56"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="600" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Grid.Column="1" Margin="0,16,0,16" Grid.RowSpan="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="380" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Регистрация" FontSize="24" FontWeight="Bold"
+              HorizontalAlignment="Center" Margin="0,4,0,36" Grid.Row="0" RenderTransformOrigin="0.493,-0.548" />
+
+            <Grid Margin="0,36,0,56" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="20">
+                    <TextBlock FontSize="16" Text="Фамилия" />
+                    <TextBox x:Name="FNameTxtBox" Width="250" Height="30" Margin="0,5,0,15" />
+
+                    <TextBlock FontSize="16" Text="Имя" />
+                    <TextBox x:Name="LogintxtBox" Width="250" Height="30" Margin="0,5,0,15" />
+
+                    <TextBlock FontSize="16" Text="Должность" />
+                    <ComboBox x:Name="RoleComboBox" Width="250" Height="30" Margin="0,5,0,15" SelectedIndex="0">
+                        <ComboBoxItem Content="" />
+                        <ComboBoxItem Content="Координатор" />
+                        <ComboBoxItem Content="Социальный работник" />
+                        <ComboBoxItem Content="Администратор" />
+                    </ComboBox>
+
+                    <TextBlock FontSize="16" Text="Номер телефона" />
+                    <TextBox x:Name="Extra1txtBox" Width="250" Height="30" Margin="0,5,0,15" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="20">
+                    <TextBlock FontSize="16" Text="Электронная почта" />
+                    <TextBox x:Name="LNametxtBox" Width="250" Height="30" Margin="0,5,0,15" />
+
+                    <TextBlock FontSize="16" Text="Логин" />
+                    <TextBox x:Name="PwdtxtBox" Width="250" Height="30" Margin="0,5,0,15" />
+
+                    <TextBlock Text="Пароль" FontSize="16" />
+                    <TextBox x:Name="Extra2txtBox" Width="250" Height="30" Margin="0,5,0,15" />
+
+                    <TextBlock Text="Повторите пароль" FontSize="16" />
+                    <TextBox x:Name="Extra3txtBox" Width="250" Height="30" Margin="0,5,0,15" />
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,218,0,0" Height="62" VerticalAlignment="Top">
+                <Button x:Name="BtnSingIn" Content="Завершить регестрацию" Width="144" Height="28" Click="BtnSingIn_Click"/>
+            </StackPanel>
+
+            <Button Content="Назад" Width="64" Height="21"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Margin="0,0,25,120"
+                Click="BtnBack_Click" RenderTransformOrigin="0.607,1.578" Grid.Row="1"/>
+        </Grid>
+    </Grid>
+</Page>

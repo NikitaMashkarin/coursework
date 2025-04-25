@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddPersonalDataPage.xaml.cs">
+      <DependentUpon>AddPersonalDataPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdministratorPage.xaml.cs">
       <DependentUpon>AdministratorPage.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,15 @@
     <Compile Include="CoordinatorPage.xaml.cs">
       <DependentUpon>CoordinatorPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreateReportPage.xaml.cs">
+      <DependentUpon>CreateReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateTaskPage.xaml.cs">
+      <DependentUpon>CreateTaskPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateWorkerPage.xaml.cs">
+      <DependentUpon>CreateWorkerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager.cs" />
     <Compile Include="Personal_data.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
@@ -97,6 +109,9 @@
     </Compile>
     <Compile Include="Project.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectPage.xaml.cs">
+      <DependentUpon>ProjectPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Project_objectives.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
@@ -109,6 +124,9 @@
     </Compile>
     <Compile Include="ReportPage.xaml.cs">
       <DependentUpon>ReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsAdminPage.xaml.cs">
+      <DependentUpon>ReportsAdminPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SocialWorkerPage.xaml.cs">
       <DependentUpon>SocialWorkerPage.xaml</DependentUpon>
@@ -131,6 +149,13 @@
     <Compile Include="TasksAllPage.xaml.cs">
       <DependentUpon>TasksAllPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WorkersPage.xaml.cs">
+      <DependentUpon>WorkersPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddPersonalDataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdministratorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +165,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CoordinatorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateTaskPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateWorkerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,11 +192,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RegPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportsAdminPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TasksAllPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

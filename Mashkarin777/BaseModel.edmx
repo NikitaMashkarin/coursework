@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Adress" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Passport_series" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Passport_number" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -19,14 +19,14 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Date_start" Type="date" />
@@ -37,7 +37,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_project" Type="int" />
           <Property Name="Id_task" Type="int" />
         </EntityType>
@@ -45,7 +45,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date_create" Type="date" />
           <Property Name="Id_social_worker" Type="int" />
           <Property Name="Description" Type="nvarchar(max)" />
@@ -227,7 +227,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Social_worker" Relationship="Self.FK_Social_worker_Post" FromRole="Post" ToRole="Social_worker" />
           <NavigationProperty Name="Social_worker1" Relationship="mashkarin777Model.FK_Social_worker_Post1" FromRole="Post" ToRole="Social_worker" />
         </EntityType>
         <EntityType Name="Project">
@@ -277,7 +276,6 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Personal_data1" Relationship="Self.FK_Social_worker_Personal_data" FromRole="Social_worker" ToRole="Personal_data" />
-          <NavigationProperty Name="Post1" Relationship="Self.FK_Social_worker_Post" FromRole="Social_worker" ToRole="Post" />
           <NavigationProperty Name="Report" Relationship="Self.FK_Report_Social_worker" FromRole="Social_worker" ToRole="Report" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Task_Social_worker" FromRole="Social_worker" ToRole="Task" />
           <NavigationProperty Name="Post11" Relationship="mashkarin777Model.FK_Social_worker_Post1" FromRole="Social_worker" ToRole="Post" />
@@ -314,18 +312,6 @@
             </Principal>
             <Dependent Role="Social_worker">
               <PropertyRef Name="Personal_data" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Social_worker_Post">
-          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
-          <End Role="Social_worker" Type="Self.Social_worker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Social_worker">
-              <PropertyRef Name="Post" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -400,10 +386,6 @@
           <EntitySet Name="Task" EntityType="Self.Task" />
           <AssociationSet Name="FK_Social_worker_Personal_data" Association="Self.FK_Social_worker_Personal_data">
             <End Role="Personal_data" EntitySet="Personal_data" />
-            <End Role="Social_worker" EntitySet="Social_worker" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Social_worker_Post" Association="Self.FK_Social_worker_Post">
-            <End Role="Post" EntitySet="Post" />
             <End Role="Social_worker" EntitySet="Social_worker" />
           </AssociationSet>
           <AssociationSet Name="FK_Project_objectives_Project" Association="Self.FK_Project_objectives_Project">

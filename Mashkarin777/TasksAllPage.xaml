@@ -22,7 +22,7 @@
 
         <Button Content="Назад" Width="100" Height="30"
             HorizontalAlignment="Left" VerticalAlignment="Top"
-            Margin="90,218,0,0"
+            Margin="90,336,0,0"
             Click="BtnBack_Click"
             Grid.Row="1" Grid.Column="2" />
 
@@ -42,14 +42,34 @@
                    Margin="0,10,0,0" />
 
             <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Button Content="Получить все задачи" Width="215" Height="40" Margin="0,10" Click="BtnGetAllTasks_Click"/>
+                <Button Content="Получить все задачи" Width="215" Height="35" Margin="0,10" Click="BtnGetAllTasks_Click"/>
 
-                <Button Content="Невыполненные задачи" Width="215" Height="40" Margin="0,10" Click="BtnGetTasksModeFalse_Click"/>
+                <Button Content="Невыполненные задачи" Width="215" Height="34" Margin="0,10" Click="BtnGetTasksModeFalse_Click"/>
+
+                <Button Content="Создать задачу" Width="215" Height="33" Margin="0,10" Click="BtnCreateTask_Click"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
                     <TextBox x:Name="TaskIdTextBox" Width="100" Height="30" Margin="0,0,10,0" />
                     <Button Content="Получить задачу" Width="106" Height="30" Click="BtnGetTaskById_Click"/>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="42">
+                    <StackPanel Orientation="Vertical" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <TextBlock Text="ID задачи:" Margin="0,0,0,2"/>
+                        <TextBox x:Name="TaskIdAssignTextBox" Width="72" Height="21"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <TextBlock Text="ID соц. работника:"/>
+                        <TextBox x:Name="WorkerIdAssignTextBox" Width="100" Height="22"/>
+                    </StackPanel>
+
+                    <Button Content="Переназначить задачу"
+                        Width="132" Height="32"
+                        VerticalAlignment="Bottom"
+                        Click="BtnAssignTaskToWorker_Click"/>
+                </StackPanel>
+
+
             </StackPanel>
 
         </Grid>

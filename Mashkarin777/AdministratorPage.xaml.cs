@@ -29,28 +29,27 @@ namespace Mashkarin777
 
         private void BtnProjects_Click(object sender, RoutedEventArgs e)
         {
-            // Открытие окна или логика по проектам
-            MessageBox.Show($"{id}", "Добро пожаловать!", MessageBoxButton.OK, MessageBoxImage.Information);
+            Manager.MainFrame.Navigate(new ProjectPage(id));
         }
 
         private void BtnEmployees_Click(object sender, RoutedEventArgs e)
         {
-            // Открытие базы сотрудников
+            Manager.MainFrame.Navigate(new WorkersPage());
         }
 
         private void BtnGenerateSummaryReport_Click(object sender, RoutedEventArgs e)
         {
-            // Генерация сводного отчёта
+            Manager.MainFrame.Navigate(new ReportsAdminPage());
         }
 
         private void BtnReports_Click(object sender, RoutedEventArgs e)
         {
-            // Генерация сводного отчёта
+            Manager.MainFrame.Navigate(new ReportPage());
         }
 
         private void BtnTasks_Click(object sender, RoutedEventArgs e)
         {
-            // Генерация сводного отчёта
+            Manager.MainFrame.Navigate(new TasksAllPage());
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

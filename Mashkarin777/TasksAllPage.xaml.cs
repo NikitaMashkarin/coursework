@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Mashkarin777
 {
-    /// <summary>
-    /// Логика взаимодействия для TasksAllPage.xaml
-    /// </summary>
     public partial class TasksAllPage : Page
     {
         public TasksAllPage()
@@ -94,5 +91,60 @@ namespace Mashkarin777
         {
             Manager.MainFrame.GoBack(); ;
         }
+
+        private void BtnAssignTaskToWorker_Click(object sender, RoutedEventArgs e)
+        {
+            if (!int.TryParse(TaskIdAssignTextBox.Text, out int taskId) || !int.TryParse(WorkerIdAssignTextBox.Text, out int workerId))
+            {
+                MessageBox.Show("Введите корректные числовые значения ID задачи и ID работника.");
+                return;
+            }
+
+            using (var context = new mashkarin777Entities())
+            {
+                var task = context.Task.FirstOrDefault(t => t.Id == taskId);
+                var worker = context.Social_worker.FirstOrDefault(w => w.Id == workerId);
+
+                if (task == null)
+                {
+                    MessageBox.Show($"Задача с ID {taskId} не найдена.");
+                    return;
+                }
+
+                if (worker == null)
+                {
+                    MessageBox.Show($"Социальный работник с ID {workerId} не найден.");
+                    return;
+                }
+
+                if (task.Id_social_worker.HasValue && task.Id_social_worker != workerId)
+                {
+                    var currentWorker = context.Social_worker.FirstOrDefault(w => w.Id == task.Id_social_worker.Value);
+                    string currentName = currentWorker != null ? currentWorker.Full_name : $"ID {task.Id_social_worker}";
+
+                    var result = MessageBox.Show(
+                        $"Задача уже назначена соц. работнику: {currentName}.\nВы уверены, что хотите переназначить её?",
+                        "Подтверждение переназначения",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (result != MessageBoxResult.Yes)
+                        return;
+                }
+
+                task.Id_social_worker = workerId;
+                context.SaveChanges();
+
+                MessageBox.Show($"Задача ID {taskId} успешно переназначена социальному работнику ID {workerId}.");
+            }
+        }
+
+
+        private void BtnCreateTask_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new CreateTaskPage());
+        }
+
+
     }
 }

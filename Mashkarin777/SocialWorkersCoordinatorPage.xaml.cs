@@ -18,7 +18,9 @@ namespace Mashkarin777
         {
             using (var context = new mashkarin777Entities())
             {
-                var workers = context.Social_worker.ToList();
+                var workers = context.Social_worker
+                    .Where(w => w.Post == 2)
+                    .ToList();
 
                 if (workers.Count == 0)
                 {

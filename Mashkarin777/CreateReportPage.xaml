@@ -1,0 +1,51 @@
+﻿<Page x:Class="Mashkarin777.CreateReportPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Mashkarin777"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CreateReportPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85*"></RowDefinition>
+            <RowDefinition Height="330"></RowDefinition>
+            <RowDefinition Height="85*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250*"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="250*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button Content="Назад" Width="100" Height="30"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="140,290,0,0"
+            Click="BtnBack_Click"
+            Grid.Row="1" Grid.Column="2" />
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid Margin="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="111*"></RowDefinition>
+                    <RowDefinition Height="44*"></RowDefinition>
+                    <RowDefinition Height="102*"></RowDefinition>
+                    <RowDefinition Height="29*"></RowDefinition>
+                    <RowDefinition Height="36*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Height="31" Width="194"><Run Language="ru-ru" Text="Создание отчета"/></TextBlock>
+                <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Height="40" Width="150">
+                    <TextBlock FontSize="16"><Run Language="ru-ru" Text="Номер проекта"/></TextBlock>
+                    <TextBox x:Name="IdProjectTxtBox" VerticalContentAlignment="Center"  Width="150"/>
+                </WrapPanel>
+                <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Height="102" Width="150">
+                    <TextBlock Text="Описание:" Width="59" RenderTransformOrigin="0.534,-0.034"/>
+                    <TextBox x:Name="DescriptionTxtBox" Height="59" AcceptsReturn="True" TextWrapping="Wrap" Width="150"/>
+                </WrapPanel>
+                <Button x:Name="BtnLogin" Content="Создать отчет" Grid.Row="3" Click="BtnLogin_Click" Margin="43,0,43,0" RenderTransformOrigin="0.5,0.1"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

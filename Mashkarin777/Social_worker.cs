@@ -31,7 +31,6 @@ namespace Mashkarin777
         public string Login { get; set; }
     
         public virtual Personal_data Personal_data1 { get; set; }
-        public virtual Post Post1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report> Report { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
