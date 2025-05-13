@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Mashkarin777"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+            <local:BooleanToYesNoConverter x:Key="BooleanToYesNoConverter"/>
     </Application.Resources>
 </Application>

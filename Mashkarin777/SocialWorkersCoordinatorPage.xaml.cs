@@ -16,24 +16,25 @@ namespace Mashkarin777
 
         private void BtnGetAllTasks_Click(object sender, RoutedEventArgs e)
         {
-            using (var context = new mashkarin777Entities())
-            {
-                var workers = context.Social_worker
-                    .Where(w => w.Post == 2)
-                    .ToList();
+            //using (var context = new mashkarin777Entities())
+            //{
+            //    var workers = context.Social_worker
+            //        .Where(w => w.Post == 2)
+            //        .ToList();
 
-                if (workers.Count == 0)
-                {
-                    MessageBox.Show("Социальные работники не найдены.");
-                    return;
-                }
+            //    if (workers.Count == 0)
+            //    {
+            //        MessageBox.Show("Социальные работники не найдены.");
+            //        return;
+            //    }
 
-                string workerList = string.Join("\n", workers.Select(w =>
-                    $"ID: {w.Id}, ФИО: {w.Full_name.Trim()}, Телефон: {w.Phone.Trim()}, Email: {w.Email.Trim()}"));
+            //    string workerList = string.Join("\n", workers.Select(w =>
+            //        $"ID: {w.Id}, ФИО: {w.Full_name.Trim()}, Телефон: {w.Phone.Trim()}, Email: {w.Email.Trim()}"));
 
-                MessageBox.Show(workerList, "Список социальных работников",
-                                MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            //    MessageBox.Show(workerList, "Список социальных работников",
+            //                    MessageBoxButton.OK, MessageBoxImage.Information);
+            //}
+            Manager.MainFrame.Navigate(new AllSocialWorkerTablePage());
         }
 
 

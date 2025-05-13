@@ -24,43 +24,45 @@ namespace Mashkarin777
 
         private void BtnGetAllTasks_Click(object sender, RoutedEventArgs e)
         {
-            using (var context = new mashkarin777Entities())
-            {
-                var tasks = context.Task
-                                   .ToList();
+            //using (var context = new mashkarin777Entities())
+            //{
+            //    var tasks = context.Task
+            //                       .ToList();
 
-                if (tasks.Count == 0)
-                {
-                    MessageBox.Show("Невыполненные задачи не найдены.");
-                    return;
-                }
+            //    if (tasks.Count == 0)
+            //    {
+            //        MessageBox.Show("Невыполненные задачи не найдены.");
+            //        return;
+            //    }
 
-                string taskList = string.Join("\n", tasks.Select(t =>
-                    $"ID: {t.Id}\nНазвание: {t.Name}\nОписание: {t.Description}\nСрок Выполнения: {t.Date_end}\nВыполнена: {t.Made}"));
+            //    string taskList = string.Join("\n", tasks.Select(t =>
+            //        $"ID: {t.Id}\nНазвание: {t.Name}\nОписание: {t.Description}\nСрок Выполнения: {t.Date_end}\nВыполнена: {t.Made}"));
 
-                MessageBox.Show(taskList, "Невыполненные задачи", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            //    MessageBox.Show(taskList, "Невыполненные задачи", MessageBoxButton.OK, MessageBoxImage.Information);
+            //}
+            Manager.MainFrame.Navigate(new AllTasksTablePage());
         }
 
         private void BtnGetTasksModeFalse_Click(object sender, RoutedEventArgs e)
         {
-            using (var context = new mashkarin777Entities())
-            {
-                var tasks = context.Task
-                                   .Where(t => t.Made == false)
-                                   .ToList();
+            //using (var context = new mashkarin777Entities())
+            //{
+            //    var tasks = context.Task
+            //                       .Where(t => t.Made == false)
+            //                       .ToList();
 
-                if (tasks.Count == 0)
-                {
-                    MessageBox.Show("Невыполненные задачи не найдены.");
-                    return;
-                }
+            //    if (tasks.Count == 0)
+            //    {
+            //        MessageBox.Show("Невыполненные задачи не найдены.");
+            //        return;
+            //    }
 
-                string taskList = string.Join("\n", tasks.Select(t =>
-                    $"ID: {t.Id}\nНазвание: {t.Name}\nОписание: {t.Description}\nСрок Выполнения: {t.Date_end}\nВыполнена: {t.Made}"));
+            //    string taskList = string.Join("\n", tasks.Select(t =>
+            //        $"ID: {t.Id}\nНазвание: {t.Name}\nОписание: {t.Description}\nСрок Выполнения: {t.Date_end}\nВыполнена: {t.Made}"));
 
-                MessageBox.Show(taskList, "Невыполненные задачи", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            //    MessageBox.Show(taskList, "Невыполненные задачи", MessageBoxButton.OK, MessageBoxImage.Information);
+            //}
+            Manager.MainFrame.Navigate(new UncompletedTasksTablePage());
         }
 
         private void BtnGetTaskById_Click(object sender, RoutedEventArgs e)

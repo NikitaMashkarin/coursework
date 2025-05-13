@@ -31,21 +31,22 @@ namespace Mashkarin777
         }
         private void BtnGetAllWorker_Click(object sender, RoutedEventArgs e)
         {
-            using (var context = new mashkarin777Entities())
-            {
-                var workers = context.Social_worker.ToList();
+            //using (var context = new mashkarin777Entities())
+            //{
+            //    var workers = context.Social_worker.ToList();
 
-                if (workers.Count == 0)
-                {
-                    MessageBox.Show("Работники не найдены.");
-                    return;
-                }
+            //    if (workers.Count == 0)
+            //    {
+            //        MessageBox.Show("Работники не найдены.");
+            //        return;
+            //    }
 
-                string output = string.Join("\n\n", workers.Select(w =>
-                    $"ID: {w.Id}\nФИО: {w.Full_name}\nТелефон: {w.Phone}\nEmail: {w.Email}"));
+            //    string output = string.Join("\n\n", workers.Select(w =>
+            //        $"ID: {w.Id}\nФИО: {w.Full_name}\nТелефон: {w.Phone}\nEmail: {w.Email}"));
 
-                MessageBox.Show(output, "Все работники", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            //    MessageBox.Show(output, "Все работники", MessageBoxButton.OK, MessageBoxImage.Information);
+            //}
+            Manager.MainFrame.Navigate(new WorkersTablePage());
         }
 
         private void BtnAddPersonalData_Click(object sender, RoutedEventArgs e)

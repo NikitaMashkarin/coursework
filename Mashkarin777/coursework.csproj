@@ -70,6 +70,21 @@
     <Compile Include="AdministratorPage.xaml.cs">
       <DependentUpon>AdministratorPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AllProjectsTablePage.xaml.cs">
+      <DependentUpon>AllProjectsTablePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AllReportsTablePage.xaml.cs">
+      <DependentUpon>AllReportsTablePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AllSocialWorkerTablePage.xaml.cs">
+      <DependentUpon>AllSocialWorkerTablePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AllTasksTablePage.xaml.cs">
+      <DependentUpon>AllTasksTablePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AllTaskTablePage.xaml.cs">
+      <DependentUpon>AllTaskTablePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
@@ -88,6 +103,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BooleanToYesNoConverter.cs" />
+    <Compile Include="CompletedTasksTablePage.xaml.cs">
+      <DependentUpon>CompletedTasksTablePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CoordinatorPage.xaml.cs">
       <DependentUpon>CoordinatorPage.xaml</DependentUpon>
     </Compile>
@@ -100,9 +119,18 @@
     <Compile Include="CreateWorkerPage.xaml.cs">
       <DependentUpon>CreateWorkerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CurrentTasksTablePage.xaml.cs">
+      <DependentUpon>CurrentTasksTablePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager.cs" />
+    <Compile Include="OverdueTasksTablePage.xaml.cs">
+      <DependentUpon>OverdueTasksTablePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Personal_data.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PositionsPage.xaml.cs">
+      <DependentUpon>PositionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Post.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
@@ -112,6 +140,12 @@
     </Compile>
     <Compile Include="ProjectPage.xaml.cs">
       <DependentUpon>ProjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectParticipationPage.xaml.cs">
+      <DependentUpon>ProjectParticipationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectTasksTablePage.xaml.cs">
+      <DependentUpon>ProjectTasksTablePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Project_objectives.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
@@ -127,6 +161,9 @@
     </Compile>
     <Compile Include="ReportsAdminPage.xaml.cs">
       <DependentUpon>ReportsAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsByWorkersPage.xaml.cs">
+      <DependentUpon>ReportsByWorkersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SocialWorkerPage.xaml.cs">
       <DependentUpon>SocialWorkerPage.xaml</DependentUpon>
@@ -149,8 +186,17 @@
     <Compile Include="TasksAllPage.xaml.cs">
       <DependentUpon>TasksAllPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UncompletedTasksTablePage.xaml.cs">
+      <DependentUpon>UncompletedTasksTablePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UnfinishedProjectsTablePage.xaml.cs">
+      <DependentUpon>UnfinishedProjectsTablePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WorkersPage.xaml.cs">
       <DependentUpon>WorkersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkersTablePage.xaml.cs">
+      <DependentUpon>WorkersTablePage.xaml</DependentUpon>
     </Compile>
     <Page Include="AddPersonalDataPage.xaml">
       <SubType>Designer</SubType>
@@ -160,7 +206,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AllProjectsTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AllReportsTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AllSocialWorkerTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AllTasksTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AllTaskTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CompletedTasksTablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,6 +250,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CurrentTasksTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -192,7 +266,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OverdueTasksTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PositionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProjectParticipationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProjectTasksTablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,6 +295,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ReportsAdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportsByWorkersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,7 +318,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UncompletedTasksTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UnfinishedProjectsTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WorkersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkersTablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -37,22 +37,23 @@ namespace Mashkarin777
                     return;
                 }
 
-                MessageBox.Show($"{user.Full_name}", "Добро пожаловать!", MessageBoxButton.OK, MessageBoxImage.Information);
-
                 switch (user.Post)
                 {
                     case 1:
                         {
+                            MessageBox.Show($"{user.Full_name }  Вы зашли с правами Администратора", "Добро пожаловать!", MessageBoxButton.OK, MessageBoxImage.Information);
                             Manager.MainFrame.Navigate(new AdministratorPage(user.Id));
                             break;
                         }
                     case 2:
                         {
+                            MessageBox.Show($"{user.Full_name} Вы зашли с правами Социального работника", "Добро пожаловать!", MessageBoxButton.OK, MessageBoxImage.Information);
                             Manager.MainFrame.Navigate(new SocialWorkerPage(user.Id));
                             break;
                         }
                     case 3:
                         {
+                            MessageBox.Show($"{user.Full_name} Вы зашли с правами Координатора", "Добро пожаловать!", MessageBoxButton.OK, MessageBoxImage.Information);
                             Manager.MainFrame.Navigate(new CoordinatorPage(user.Id));
                             break;
                         }

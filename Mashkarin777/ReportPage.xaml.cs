@@ -13,21 +13,22 @@ namespace Mashkarin777
 
         private void BtnGetAllTasks_Click(object sender, RoutedEventArgs e)
         {
-            using (var context = new mashkarin777Entities())
-            {
-                var reports = context.Report.Include("Social_worker").ToList();
+            //using (var context = new mashkarin777Entities())
+            //{
+            //    var reports = context.Report.Include("Social_worker").ToList();
 
-                if (reports.Count == 0)
-                {
-                    MessageBox.Show("Отчеты не найдены.");
-                    return;
-                }
+            //    if (reports.Count == 0)
+            //    {
+            //        MessageBox.Show("Отчеты не найдены.");
+            //        return;
+            //    }
 
-                string reportList = string.Join("\n\n", reports.Select(r =>
-                    $"ID: {r.Id}\nДата: {r.Date_create:dd.MM.yyyy}\nСотрудник: {r.Social_worker.Full_name.Trim()}\nОписание: {r.Description}"));
+            //    string reportList = string.Join("\n\n", reports.Select(r =>
+            //        $"ID: {r.Id}\nДата: {r.Date_create:dd.MM.yyyy}\nСотрудник: {r.Social_worker.Full_name.Trim()}\nОписание: {r.Description}"));
 
-                MessageBox.Show(reportList, "Список отчетов", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            //    MessageBox.Show(reportList, "Список отчетов", MessageBoxButton.OK, MessageBoxImage.Information);
+            //}
+            Manager.MainFrame.Navigate(new AllReportsTablePage());
         }
 
         private void BtnGetTaskById_Click(object sender, RoutedEventArgs e)
