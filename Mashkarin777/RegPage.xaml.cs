@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +11,7 @@ namespace Mashkarin777
     public partial class RegPage : Page
     {
         public StringBuilder errStr = new StringBuilder();
+
         public RegPage()
         {
             InitializeComponent();
@@ -74,27 +74,10 @@ namespace Mashkarin777
                 errStr.AppendLine("Поле 'Пароль' не должно быть пустым");
             else
             {
-                string password = Extra2txtBox.Text;
-
-                if (password.Length < 8)
+                string passwordValidationMessage = ValidatePassword(Extra2txtBox.Text);
+                if (!string.IsNullOrEmpty(passwordValidationMessage))
                 {
-                    errStr.AppendLine("Пароль должен содержать хотя бы 8 символов");
-                }
-                if (!password.Any(char.IsLower))
-                {
-                    errStr.AppendLine("Пароль должен содержать хотя бы одну строчную букву");
-                }
-                if (!password.Any(char.IsUpper))
-                {
-                    errStr.AppendLine("Пароль должен содержать хотя бы одну прописную букву");
-                }
-                if (!password.Any(char.IsDigit))
-                {
-                    errStr.AppendLine("Пароль должен содержать хотя бы одну цифру");
-                }
-                if (!password.Any(ch => !char.IsLetterOrDigit(ch)))
-                {
-                    errStr.AppendLine("Пароль должен содержать хотя бы один специальный символ");
+                    errStr.AppendLine(passwordValidationMessage);
                 }
             }
 
@@ -149,12 +132,37 @@ namespace Mashkarin777
             }
         }
 
+        public string ValidatePassword(string password)
+        {
+            StringBuilder passwordErrors = new StringBuilder();
 
+            if (password.Length < 8)
+            {
+                passwordErrors.AppendLine("Пароль должен содержать хотя бы 8 символов");
+            }
+            if (!password.Any(char.IsLower))
+            {
+                passwordErrors.AppendLine("Пароль должен содержать хотя бы одну строчную букву");
+            }
+            if (!password.Any(char.IsUpper))
+            {
+                passwordErrors.AppendLine("Пароль должен содержать хотя бы одну прописную букву");
+            }
+            if (!password.Any(char.IsDigit))
+            {
+                passwordErrors.AppendLine("Пароль должен содержать хотя бы одну цифру");
+            }
+            if (!password.Any(ch => !char.IsLetterOrDigit(ch)))
+            {
+                passwordErrors.AppendLine("Пароль должен содержать хотя бы один специальный символ");
+            }
+
+            return passwordErrors.ToString();
+        }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new AuthPage());
         }
-
     }
 }
