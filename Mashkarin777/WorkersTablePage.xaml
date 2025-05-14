@@ -13,7 +13,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Список работников" FontSize="24" FontWeight="Bold" Width="235" Margin="282,20,282,0"/>
+        <TextBlock Text="Список работников" FontSize="24" FontWeight="Bold" Margin="259,20,282,0"/>
         <DataGrid x:Name="WorkersDataGrid" Grid.Row="1" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="10,10,10,47">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>

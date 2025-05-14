@@ -11,14 +11,15 @@ namespace Mashkarin777
     /// </summary>
     public partial class RegPage : Page
     {
+        public StringBuilder errStr = new StringBuilder();
         public RegPage()
         {
             InitializeComponent();
         }
 
-        private void BtnSingIn_Click(object sender, RoutedEventArgs e)
+        public void BtnSingIn_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder errStr = new StringBuilder();
+            errStr.Clear();
 
             if (string.IsNullOrWhiteSpace(FNameTxtBox.Text))
                 errStr.AppendLine("Поле 'Фамилия' не должно быть пустым");
@@ -33,22 +34,16 @@ namespace Mashkarin777
             switch (RoleComboBox.Text)
             {
                 case "Администратор":
-                    {
-                        post = 1;
-                        break;
-                    }
+                    post = 1;
+                    break;
                 case "Социальный работник":
-                    {
-                        post = 2;
-                        break;
-                    }
+                    post = 2;
+                    break;
                 case "Координатор":
-                    {
-                        post = 3;
-                        break;
-                    }
+                    post = 3;
+                    break;
                 default:
-                    errStr.AppendLine("Такой должность не существует");
+                    errStr.AppendLine("Такой должности не существует");
                     break;
             }
 
@@ -77,6 +72,31 @@ namespace Mashkarin777
 
             if (string.IsNullOrWhiteSpace(Extra2txtBox.Text))
                 errStr.AppendLine("Поле 'Пароль' не должно быть пустым");
+            else
+            {
+                string password = Extra2txtBox.Text;
+
+                if (password.Length < 8)
+                {
+                    errStr.AppendLine("Пароль должен содержать хотя бы 8 символов");
+                }
+                if (!password.Any(char.IsLower))
+                {
+                    errStr.AppendLine("Пароль должен содержать хотя бы одну строчную букву");
+                }
+                if (!password.Any(char.IsUpper))
+                {
+                    errStr.AppendLine("Пароль должен содержать хотя бы одну прописную букву");
+                }
+                if (!password.Any(char.IsDigit))
+                {
+                    errStr.AppendLine("Пароль должен содержать хотя бы одну цифру");
+                }
+                if (!password.Any(ch => !char.IsLetterOrDigit(ch)))
+                {
+                    errStr.AppendLine("Пароль должен содержать хотя бы один специальный символ");
+                }
+            }
 
             if (string.IsNullOrWhiteSpace(Extra3txtBox.Text))
             {
@@ -108,31 +128,27 @@ namespace Mashkarin777
 
                 context.SaveChanges();
             }
+
             using (var context = new mashkarin777Entities())
             {
                 var user = context.Social_worker
-                          .FirstOrDefault(u => u.Login.Trim() == LogintxtBox.Text);
+                              .FirstOrDefault(u => u.Login.Trim() == LogintxtBox.Text);
 
                 switch (post)
                 {
                     case 1:
-                        {
-                            Manager.MainFrame.Navigate(new AdministratorPage(user.Id));
-                            break;
-                        }
+                        Manager.MainFrame.Navigate(new AdministratorPage(user.Id));
+                        break;
                     case 2:
-                        {
-                            Manager.MainFrame.Navigate(new SocialWorkerPage(user.Id));
-                            break;
-                        }
+                        Manager.MainFrame.Navigate(new SocialWorkerPage(user.Id));
+                        break;
                     case 3:
-                        {
-                            Manager.MainFrame.Navigate(new CoordinatorPage(user.Id));
-                            break;
-                        }
+                        Manager.MainFrame.Navigate(new CoordinatorPage(user.Id));
+                        break;
                 }
             }
         }
+
 
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
