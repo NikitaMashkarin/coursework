@@ -1,0 +1,53 @@
+﻿<Page x:Class="Mashkarin777.CreateProjectPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Создание проекта">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85*"/>
+            <RowDefinition Height="330"/>
+            <RowDefinition Height="85*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="250*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Создание проекта" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Center" 
+                   Grid.Row="0" 
+                   Grid.ColumnSpan="3"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+            <TextBlock Text="Название проекта" FontSize="16"/>
+            <TextBox x:Name="ProjectNameTextBox" Width="300" Height="30" Margin="0,5,0,15"/>
+
+            <TextBlock Text="Описание проекта" FontSize="16"/>
+            <TextBox x:Name="ProjectDescriptionTextBox" Width="300" Height="60" Margin="0,5,0,15" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+            <TextBlock Text="Дата начала" FontSize="16"/>
+            <DatePicker x:Name="StartDatePicker" Width="300" Margin="0,5,0,15"/>
+
+            <TextBlock Text="Дата окончания" FontSize="16"/>
+            <DatePicker x:Name="EndDatePicker" Width="300" Margin="0,5,0,15"/>
+
+            <Button Content="Создать проект" Width="150" Height="35" Click="CreateProjectButton_Click" Margin="0,10,0,0"/>
+        </StackPanel>
+
+        <Button Content="Назад" Width="80" Height="30" 
+                Click="BackButton_Click" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom" 
+                Margin="160,0,0,10" 
+                Grid.Row="1" Grid.Column="2"/>
+    </Grid>
+</Page>

@@ -122,6 +122,9 @@
     <Compile Include="CoordinatorPage.xaml.cs">
       <DependentUpon>CoordinatorPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreateProjectPage.xaml.cs">
+      <DependentUpon>CreateProjectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CreateReportPage.xaml.cs">
       <DependentUpon>CreateReportPage.xaml</DependentUpon>
     </Compile>
@@ -249,6 +252,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CoordinatorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateProjectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

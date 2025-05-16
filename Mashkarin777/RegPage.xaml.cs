@@ -17,9 +17,9 @@ namespace Mashkarin777
             InitializeComponent();
         }
 
-        public void BtnSingIn_Click(object sender, RoutedEventArgs e)
+        private void BtnSingIn_Click(object sender, RoutedEventArgs e)
         {
-            errStr.Clear();
+            StringBuilder errStr = new StringBuilder();
 
             if (string.IsNullOrWhiteSpace(FNameTxtBox.Text))
                 errStr.AppendLine("Поле 'Фамилия' не должно быть пустым");
@@ -34,16 +34,22 @@ namespace Mashkarin777
             switch (RoleComboBox.Text)
             {
                 case "Администратор":
-                    post = 1;
-                    break;
+                    {
+                        post = 1;
+                        break;
+                    }
                 case "Социальный работник":
-                    post = 2;
-                    break;
+                    {
+                        post = 2;
+                        break;
+                    }
                 case "Координатор":
-                    post = 3;
-                    break;
+                    {
+                        post = 3;
+                        break;
+                    }
                 default:
-                    errStr.AppendLine("Такой должности не существует");
+                    errStr.AppendLine("Такой должность не существует");
                     break;
             }
 
@@ -100,8 +106,8 @@ namespace Mashkarin777
             {
                 context.Social_worker.Add(new Social_worker
                 {
-                    Login = LogintxtBox.Text,
-                    Password = PwdtxtBox.Text,
+                    Login = PwdtxtBox.Text,
+                    Password = Extra3txtBox.Text,
                     Full_name = FNameTxtBox.Text + " " + LogintxtBox.Text,
                     Phone = Extra1txtBox.Text,
                     Email = LNametxtBox.Text,

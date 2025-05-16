@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Mashkarin777"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProjectPage">
@@ -21,33 +20,26 @@
         </Grid.ColumnDefinitions>
 
         <Button Content="Назад" Width="100" Height="30"
-        HorizontalAlignment="Left" VerticalAlignment="Top"
-        Margin="90,268,0,0"
-        Click="BtnBack_Click"
-        Grid.Row="1" Grid.Column="2" RenderTransformOrigin="0.443,2.016" />
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="90,278,0,0"
+                Click="BtnBack_Click"
+                Grid.Row="1" Grid.Column="2"/>
 
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="30" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Проекты"
-               FontSize="28"
-               FontWeight="Bold"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               Grid.Row="0"
-               Margin="0,10,0,0" />
+            <TextBlock Text="Проекты" FontSize="28" FontWeight="Bold" 
+                       HorizontalAlignment="Center" Margin="0,10,0,20"/>
 
-            <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Button Content="Получить все проекты" Width="254" Height="40" Margin="0,10" Click="BtnGetAllProjects_Click"/>
-
-                <Button Content="Получить задачи проекта"  Width="254" Height="40" Click="BtnGetTaskProkectById_Click"/>
-
-                  <Button Content="Получить невыполненные проекты" Width="254" Height="40" Margin="0,10" Click="BtnGetUnfinishedTasks_Click"/>
-                <Button Content="Создать отчет по проекту" Width="254" Height="40" Click="BtnCreateReport_Click"/>
+            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Width="250">
+                <Button Content="Получить все проекты" Height="40" Width="250" Margin="0,5" Click="BtnGetAllProjects_Click"/>
+                <Button Content="Получить задачи проекта" Height="40" Width="250" Margin="0,5" Click="BtnGetTaskProkectById_Click"/>
+                <Button Content="Получить невыполненные проекты" Height="40" Width="250" Margin="0,5" Click="BtnGetUnfinishedTasks_Click"/>
+                <Button Content="Создать отчет по проекту" Height="40" Width="250" Margin="0,5" Click="BtnCreateReport_Click"/>
+                <Button Content="Создать проект" Height="40" Width="250" Margin="0,5" Click="Button_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

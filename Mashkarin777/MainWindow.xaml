@@ -8,8 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="380"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="380*"/>
         </Grid.RowDefinitions>
         <Image Source="/logo.PNG" HorizontalAlignment="Left"/>
         <TextBlock Text="ПОМОЩЬ РЯДОМ" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI"></TextBlock>
