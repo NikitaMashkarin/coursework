@@ -27,3 +27,4 @@
         <Button Content="Назад" Click="BackButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Width="69" Height="32"/>
     </Grid>
 </Page>
+<!--Машкарин-->

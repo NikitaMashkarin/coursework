@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CreateReportPage">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="85*"></RowDefinition>
@@ -19,13 +18,7 @@
             <ColumnDefinition Width="300"></ColumnDefinition>
             <ColumnDefinition Width="250*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
-        <Button Content="Назад" Width="100" Height="30"
-            HorizontalAlignment="Left" VerticalAlignment="Top"
-            Margin="140,290,0,0"
-            Click="BtnBack_Click"
-            Grid.Row="1" Grid.Column="2" />
-
+        <Button Content="Назад" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,290,0,0" Click="BtnBack_Click" Grid.Row="1" Grid.Column="2" />
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid Margin="4">
                 <Grid.RowDefinitions>
@@ -49,3 +42,4 @@
         </Grid>
     </Grid>
 </Page>
+<!--Машкарин-->

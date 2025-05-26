@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,5 +45,49 @@ namespace Mashkarin777
         {
             Manager.MainFrame.GoBack();
         }
+
+        private void ExportToTxtButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (OverdueTasksDataGrid.ItemsSource == null)
+            {
+                MessageBox.Show("Нет данных для экспорта.");
+                return;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Текстовый файл (*.txt)|*.txt",
+                FileName = "ПросроченныеЗадачи.txt"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    {
+                        writer.WriteLine("Просроченные задачи:");
+                        writer.WriteLine();
+
+                        foreach (var item in OverdueTasksDataGrid.ItemsSource)
+                        {
+                            dynamic task = item;
+                            writer.WriteLine($"Название: {task.Name}");
+                            writer.WriteLine($"Описание: {task.Description}");
+                            writer.WriteLine($"Срок: {task.Date_end:dd.MM.yyyy}");
+                            writer.WriteLine($"Работник: {task.Worker}");
+                            writer.WriteLine(new string('-', 40));
+                        }
+                    }
+
+                    MessageBox.Show("Отчёт успешно сохранён.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при сохранении отчёта: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
     }
 }

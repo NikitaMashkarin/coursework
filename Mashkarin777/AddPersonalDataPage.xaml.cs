@@ -20,6 +20,15 @@ namespace Mashkarin777
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(AddressTextBox.Text) ||
+                string.IsNullOrWhiteSpace(PassportSeriesTextBox.Text) ||
+                string.IsNullOrWhiteSpace(PassportNumberTextBox.Text) ||
+                string.IsNullOrWhiteSpace(SNILSTextBox.Text))
+            {
+                MessageBox.Show("Заполните все поля персональных данных.");
+                return;
+            }
+
             using (var context = new mashkarin777Entities())
             {
                 var worker = context.Social_worker.FirstOrDefault(w => w.Id == workerId);
@@ -31,21 +40,23 @@ namespace Mashkarin777
 
                 var personalData = new Personal_data
                 {
-                    Adress = AddressTextBox.Text,
-                    Passport_series = PassportSeriesTextBox.Text,
-                    Passport_number = PassportNumberTextBox.Text,
-                    SNILS = SNILSTextBox.Text
+                    Adress = AddressTextBox.Text.Trim(),
+                    Passport_series = PassportSeriesTextBox.Text.Trim(),
+                    Passport_number = PassportNumberTextBox.Text.Trim(),
+                    SNILS = SNILSTextBox.Text.Trim()
                 };
 
                 context.Personal_data.Add(personalData);
                 context.SaveChanges();
 
                 worker.Personal_data = personalData.Id;
+
                 context.SaveChanges();
 
                 MessageBox.Show("Персональные данные успешно сохранены и связаны с работником.");
             }
         }
+
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -54,5 +56,48 @@ namespace Mashkarin777
             if (NavigationService.CanGoBack)
                 NavigationService.GoBack();
         }
+
+        private void ExportToTxtButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ReportsDataGrid.ItemsSource == null)
+            {
+                MessageBox.Show("Нет данных для экспорта.");
+                return;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Текстовый файл (*.txt)|*.txt",
+                FileName = "ОтчётыСотрудников.txt"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    {
+                        writer.WriteLine("Отчёты сотрудников:");
+                        writer.WriteLine();
+
+                        foreach (var item in ReportsDataGrid.ItemsSource)
+                        {
+                            dynamic report = item;
+                            writer.WriteLine($"ID работника: {report.WorkerId}");
+                            writer.WriteLine($"ФИО: {report.WorkerName}");
+                            writer.WriteLine($"Количество отчётов: {report.ReportCount}");
+                            writer.WriteLine(new string('-', 40));
+                        }
+                    }
+
+                    MessageBox.Show("Отчёт успешно сохранён.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при сохранении отчёта: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
     }
 }

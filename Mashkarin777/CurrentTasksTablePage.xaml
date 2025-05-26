@@ -6,15 +6,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CurrentTasksTablePage">
-
     <Grid Background="#f7ebdf">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <TextBlock Text="Текущие задачи" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0"/>
-
         <DataGrid x:Name="TasksDataGrid" Grid.Row="1" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="10,10,10,47">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="200"/>
@@ -23,7 +20,14 @@
                 <DataGridTextColumn Header="Работник" Binding="{Binding Worker}" Width="200"/>
             </DataGrid.Columns>
         </DataGrid>
-
-        <Button Content="Назад" Click="BackButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Width="69" Height="32"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" Margin="0,0,10,0" Height="52">
+            <Button Content="Скачать отчёт"
+            Click="ExportToTxtButton_Click"
+            Width="120" Height="32" HorizontalAlignment="Left"/>
+            <Button Content="Назад"
+            Click="BackButton_Click"
+            Width="69" Height="32" />
+        </StackPanel>
     </Grid>
 </Page>
+<!--Машкарин-->

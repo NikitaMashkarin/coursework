@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:Mashkarin777"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-            <local:BooleanToYesNoConverter x:Key="BooleanToYesNoConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Properties/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

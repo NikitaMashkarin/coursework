@@ -18,7 +18,6 @@
             <ColumnDefinition Width="300"></ColumnDefinition>
             <ColumnDefinition Width="250*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid Margin="4">
                 <Grid.RowDefinitions>
@@ -30,17 +29,16 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="Авторизация" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center" TextAlignment="Center" Margin="71,0,0,0"/>
                 <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-                    <TextBlock Text="Логин" FontSize="16"/>
+                    <TextBlock Text="Логин  " FontSize="16"/>
                     <TextBox x:Name="LoginTxtBox" VerticalContentAlignment="Center"  Width="150"/>
                 </WrapPanel>
                 <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
                     <TextBlock Text="Пароль" FontSize="16"></TextBlock>
                     <TextBox x:Name="PswdTxtBox" VerticalContentAlignment="Center" Width="150" RenderTransformOrigin="0.487,1.88"/>
                 </WrapPanel>
-                <Button x:Name="BtnLogin" Content="Войти" Grid.Row="2" Click="BtnLogin_Click" Margin="-3,55,3,0" Grid.RowSpan="2">
-                </Button>
-                <Button x:Name="BtnSingIn" Content="Зарегистрироваться" Click="BtnSingIn_Click" VerticalAlignment="Top" Grid.Row="4" Margin="-3,5,3,0"></Button>
+                <Button x:Name="BtnLogin" Height="30" Content="Войти" Grid.Row="3" Click="BtnLogin_Click" Margin="71,12,71,13"/>
             </Grid>
         </Grid>
     </Grid>
 </Page>
+    <!--Машкарин-->
